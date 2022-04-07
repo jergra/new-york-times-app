@@ -11,24 +11,23 @@ function App() {
 
   const queryChangeHandler = (e) => {
     setQuery(e.target.value);
-    console.log("query:", query)
+    //console.log("query:", query)
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log('e:', e)
-    console.log("query at submit:", query)
+    //console.log('e:', e)
+    //console.log("query at submit:", query)
     setSubmitted(query)
   };
   
   useEffect(() => {
     const nytKey = process.env.REACT_APP_ARTICLES_API_KEY
-    console.log('nytKey:', nytKey)
 
     fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=` + submitted + `&api-key=` + nytKey)
     // Handle success
     .then(response => response.json())  // convert to json
     .then(myJSON => {
-      console.log('myJSON.response.docs:', myJSON.response.docs)
+      //console.log('myJSON.response.docs:', myJSON.response.docs)
       setArticles(myJSON.response.docs) 
     })
     .then(setIsLoading(false))

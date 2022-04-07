@@ -11,3 +11,11 @@ from tutorial:
 start:
     npm start
 
+deployed:
+    https://new-york-times-app.vercel.app/
+
+update:
+    git add .
+    git commit -m "message"
+    git push
+
