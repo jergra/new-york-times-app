@@ -1,4 +1,4 @@
-april 6, 2022
+April 6, 2022
 
 C:\dev\new-york-times-app 
 
