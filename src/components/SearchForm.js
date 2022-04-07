@@ -1,7 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-const SearchForm = ({submitHandler, submitted, queryChangeHandler}) => {
-  return (
+const SearchForm = ({newSearch}) => {
+
+    const [text, setText] = useState('e.g. election')
+
+    const queryChangeHandler = (e) => {
+        setText(e.target.value);
+    };
+    const submitHandler = (e) => {
+        e.preventDefault();
+        newSearch(text)
+    };
+  
+    return (
     <div>
         <form 
             onSubmit={submitHandler}
@@ -9,7 +20,7 @@ const SearchForm = ({submitHandler, submitted, queryChangeHandler}) => {
             >
             <input
                 name="query"
-                placeholder={submitted}
+                placeholder={text}
                 onChange={queryChangeHandler}
                 className="border-solid border-2 border-gray-400 rounded pl-1"
             />

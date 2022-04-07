@@ -8,7 +8,9 @@ from tutorial:
 
     by tsbsankara 
 
-the code differs from the tutorial code
+This is an example of a component that makes a change
+to the app, displaying how to pass this change back to
+the app from the component.
 
 start:
     npm start

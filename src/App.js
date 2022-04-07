@@ -1,29 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import './index.css'
-import SearchForm from './SearchForm'
+import SearchForm from './components/SearchForm'
 
 function App() {
 
   const [articles, setArticles] = useState([])
-  const [query, setQuery] = useState('')
-  const [submitted, setSubmitted] = useState('piano')
   const [isLoading, setIsLoading] = useState(true)
+  const [text, setText] = useState('Canada')
 
-  const queryChangeHandler = (e) => {
-    setQuery(e.target.value);
-    //console.log("query:", query)
-  };
-  const submitHandler = (e) => {
-    e.preventDefault();
-    //console.log('e:', e)
-    //console.log("query at submit:", query)
-    setSubmitted(query)
-  };
-  
   useEffect(() => {
     const nytKey = process.env.REACT_APP_ARTICLES_API_KEY
-
-    fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=` + submitted + `&api-key=` + nytKey)
+    
+    fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=` + text + `&api-key=` + nytKey)
     // Handle success
     .then(response => response.json())  // convert to json
     .then(myJSON => {
@@ -32,18 +20,16 @@ function App() {
     })
     .then(setIsLoading(false))
     .catch(err => console.log('Request Failed', err)); // Catch errors
-}, [submitted])
+  }, [text])
 
   return (
     <>
       <div className="showcase">
         <div className="overlay px-5">
-          <div className="text-white mb-10 text-5xl font-semibold capitalize">Viewing articles about {submitted}</div>
+          <div className="text-white mb-10 text-5xl font-semibold capitalize">Viewing articles about {text}</div>
           
           <SearchForm 
-            submitHandler={submitHandler}
-            submitted={submitted}
-            queryChangeHandler={queryChangeHandler}
+            newSearch={(text) => setText(text)}
           />
 
         </div>
