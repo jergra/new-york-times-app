@@ -6,6 +6,7 @@ const SearchForm = ({newSearch}) => {
 
     const queryChangeHandler = (e) => {
         setQuery(e.target.value);
+        console.log('query submitted')
     };
     const submitHandler = (e) => {
         e.preventDefault();
