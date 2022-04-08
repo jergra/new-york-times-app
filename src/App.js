@@ -47,19 +47,19 @@ function App() {
               key={index}
               className="mb-8 bg-white p-5 rounded-lg"
             >
-              <div className="flex mb-4 w-[1600px]">
+              <div className="flex mb-4">
               {
                 article.multimedia[0] ? (
-                  <div className="mb-2 mr-10">
-                      <img src={'https://static01.nyt.com/' + article.multimedia[0].url} alt='' />
+                  <div className="mb-2 mr-8">
+                      <img src={'https://static01.nyt.com/' + article.multimedia[0].url} width={700} alt='' />
                   </div>
                 ) : (
                   <div></div>
                 )
               }
-                <div>
-                  <div className="font-semibold mb-2 w-1/2">{article.headline.main}</div>
-                  <div className="mb-2 w-1/2">{article.abstract}</div>
+                <div className='w-1/2'>
+                  <div className="font-semibold mb-2">{article.headline.main}</div>
+                  <div className="mb-2">{article.abstract}</div>
                 </div>
               </div>
 
