@@ -12,8 +12,9 @@ This is an example of a component that makes a change
 to the app, displaying how to pass this change back to
 the app from the component.
 
-Basically, we need to set the state of 'query' twice.  First in the component, then
-we send 'query' back to the app where we run 'setQuery' again.
+Basically, we need to set the state of 'query' twice.  
+First in the component, then we send 'query' back to the app 
+where we run 'setQuery' again.
 
 start:
     npm start

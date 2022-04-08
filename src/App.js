@@ -84,8 +84,9 @@ function App() {
             </div>
 
             // another way (left here for reference):
+
+            // {articles.map((article, index) => {
             
-            // {
             //   const {
             //     headline,
             //     abstract,
@@ -114,6 +115,8 @@ function App() {
             //     </div>
             //   )
             // }
+            
+            // )}
         )} 
         
       </section> )
