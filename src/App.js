@@ -14,8 +14,10 @@ function App() {
     // Handle success
     .then(response => response.json())  // convert to json
     .then(myJSON => {
-      //console.log('myJSON.response.docs:', myJSON.response.docs)
+      console.log('myJSON.response.docs:', myJSON.response.docs)
       setArticles(myJSON.response.docs) 
+      console.log('myJSON.response.docs[0]:', myJSON.response.docs[0])
+      console.log('myJSON.response.docs[0].multimedia[0].url:', myJSON.response.docs[0].multimedia[0].url)
     })
     .then(setIsLoading(false))
     .catch(err => console.log('Request Failed', err)); // Catch errors
@@ -45,9 +47,30 @@ function App() {
               key={index}
               className="mb-8 bg-white p-5 rounded-lg"
             >
-              <div className="font-semibold mb-2">{article.headline.main}</div>
-              <div className="mb-2">{article.abstract}</div>
-              <div className="mb-2">{article.lead_paragraph}</div>
+              <div className="flex mb-4 w-[1600px]">
+              {
+                article.multimedia[0] ? (
+                  <div className="mb-2 mr-10">
+                      <img src={'https://static01.nyt.com/' + article.multimedia[0].url} alt='' />
+                  </div>
+                ) : (
+                  <div></div>
+                )
+              }
+                <div>
+                  <div className="font-semibold mb-2 w-1/2">{article.headline.main}</div>
+                  <div className="mb-2 w-1/2">{article.abstract}</div>
+                </div>
+              </div>
+
+              {
+                article.lead_paragraph === article.abstract ? (
+                  <div></div>
+                ) : (
+                  <div className="mb-2">{article.lead_paragraph}</div>
+                )
+              }
+            
               <div>
                 <a 
                   href={article.web_url} 
@@ -60,7 +83,7 @@ function App() {
               </div>
             </div>
 
-            // below is another way of doing the above (lines 44 to 61)
+            // another way (left here for reference):
             
             // {
             //   const {
